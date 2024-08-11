@@ -1,2 +1,1 @@
-# LeetCode
-Documenting my leetcode journey here.
+# Documenting my leetcode journey here.
