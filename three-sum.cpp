@@ -2,6 +2,8 @@
 // Notice that the solution set must not contain duplicate triplets
 
 //Used a two pointer approach where I sorted the vector first and then constantly check if the sum is lesser or greater than our requirement 
+//For the condition of the sum being lesser than required , I moved the leftmost pointer since it is pointing lesser elements so we increase it in order to increase the sum
+//Else we decrement the rightmost pointer 
 
 class Solution {
 public:
