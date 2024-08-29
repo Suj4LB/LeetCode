@@ -1,5 +1,8 @@
 //Q. - Given an integer x, return true if x is a palindrome, and false otherwise.
 
+//Implemented the solution using stack data structure and mathematical logic.
+//The order of digits would remain the same for all palindrome numbers.
+//Extracted the digits using mathematics and rebuilded the reverse order of digits into a number and then we check if they are same or not.
 class Solution {
 public:
     bool isPalindrome(int x) {
