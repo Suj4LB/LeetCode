@@ -1,8 +1,8 @@
 //Q.- Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 // Notice that the solution set must not contain duplicate triplets
 
-//Used a two pointer approach where I sorted the vector first and then constantly check if the sum is lesser or greater than our requirement 
-//For the condition of the sum being lesser than required , I moved the leftmost pointer since it is pointing lesser elements so we increase it in order to increase the sum
+//Used a two pointer approach where I sorted the vector first and then constantly checked if the sum is lesser than or greater than our requirement 
+//For the condition of the sum being lesser than required , I moved the leftmost pointer since it is pointing at the lesser value elements so we increase it in order to increase the sum
 //Else we decrement the rightmost pointer 
 
 class Solution {
