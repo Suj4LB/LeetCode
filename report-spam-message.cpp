@@ -3,4 +3,16 @@
       // Return true if the array message is spam, and false otherwise.
 
 
- 
+//Approach - Used an unordered set from c++ STL library to solve this problem
+
+class Solution {
+public:
+    bool reportSpam(vector<string>& message, vector<string>& bannedWords) {
+        unordered_set<string> st(bannedWords.begin(), bannedWords.end());
+        int cnt = 0;
+        for(auto it : message) {
+            if(st.find(it) != st.end()) cnt++;
+        } 
+        return (cnt >= 2);
+    }
+};
