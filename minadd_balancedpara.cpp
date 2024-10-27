@@ -9,3 +9,21 @@ For example, if s = "()))", you can insert an opening parenthesis to be "(()))" 
 Return the minimum number of moves required to make s valid.
   */
 
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+        int is = 0;
+        int tomake = 0;
+        int n = s.size();
+        for(int i=0;i<n;++i){
+            if(s[i] == '(') is++;
+            else if(s[i] == ')' && is>0){
+                is--;
+            }
+            else{
+                tomake++;
+            }
+        }
+        return is+tomake;
+    }
+};
