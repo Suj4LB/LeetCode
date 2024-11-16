@@ -7,22 +7,22 @@ The test cases are generated so that the answer will be less than or equal to 2 
 
 */
 
-Solution - Keeping in mind of the steps of Memoization in Dynamic Programming, I have used an Unordered Map for this solution.
+Solution - Keeping in mind of the steps of Memoization in Dynamic Programming, I have used a 2D Integer Vector for this solution.
 
 class Solution {
 public:
-    int gridTravelMemo(int m, int n, unordered_map<string,int> memo)
-    {
-        // We create a Key Value out of the arguments to search in the Map
-        string key = to_string(n) + "," + to_string(m);
-        // Returning the value if found
-        if (memo.find(key) != memo.end()) return memo[key];
+    int gridTravelMemo(int m, int n, vector<vector<int>> &memo) {
+        // When both the row and column is 1, we get a solution which is 1
+        if (n == 1 || m == 1) {
+            memo[m][n] = 1;
+            return 1;
+        }
         if (n == 0 || m == 0) return 0; // Handling base case of either the row becoming 0 or the column becoming 0 ( Such grid doesn't exist therefore the solution is 0 )
-        if (n == 1 && m == 1) return 1; // When both the row and column is 1, we get a solution which is 1
-        int ans = gridTravelMemo(n-1, m, memo) + gridTravelMemo(n, m-1, memo); // If we don't have a solution, we compute it and store it and later return it
-        memo.insert({key, ans}); // Inserting the solved solution
-        return memo[key]; // Returning the value
+        if (memo[m][n] == 0) // // If we don't have a solution, we compute it and store it and later return it
+            memo[m][n] = gridTravelMemo(m - 1, n, memo) + gridTravelMemo(m, n - 1, memo);
+        return memo[m][n]; // Returning the computed solution
     }
+    
     int uniquePaths(int m, int n) {
         // Recursive Code - 
             // if(n<0 || m<0) return -1;
@@ -30,14 +30,14 @@ public:
             // if(n==1 && m==1) return 1;
             // return (uniquePaths(n-1,m)) + uniquePaths(n,m-1);
         
-        // Memoization Code Starts - 
-        unordered_map<string,int> memo;
+        // Memoization Code Starts
+        vector<vector<int>> memo(m + 1, vector<int>(n + 1, 0)); // Memoization data structure with intial values as 0
         // These are the base cases for preventing the code to enter into the recursive function for such test cases - 
-        if(m == 0 || n == 0) return 0;
-        if(m == 1 && n == 1) return 1;
+        if (m == 0 || n == 0) return 0; 
+        if (m == 1 && n == 1) return 1;
         // Inserting the known solution (i.e, The solution is available only for 1 x 1 matrix which is 1)
-        memo.insert({"1,1", 1});
+        memo[1][1] = 1;
         // Calling the recursive function
-        return gridTravelMemo(n,m,memo);
+        return gridTravelMemo(m, n, memo);
     }
 };
