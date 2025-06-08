@@ -5,7 +5,7 @@ F(n) = F(n - 1) + F(n - 2), for n > 1.
 Given n, calculate F(n).
 */
 
-Solution - I have used the bottom-up approach also known as Tabulation or Backtracking. This is super simple example but it gives an idea of how Tabulation works in Dynamic Programming.
+Solution - I have used the bottom-up approach also known as Tabulation or Backtracking. This is a super simple example but it gives an idea of how Tabulation works in Dynamic Programming.
            In tabulation, we form the answers based on some known solution and the recurrence relation. It is much preferred as it provides solution for every values unlike memoization.
 
 class Solution {
