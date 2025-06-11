@@ -5,6 +5,8 @@
 
 Solution - Pick and Notpick method of recursion.
 
+Memoization Code -     
+    
 class Solution {
 public:
     int solverec(vector<int>& nums, vector<int>& dp, int index)
@@ -22,5 +24,48 @@ public:
         int n = nums.size();
         vector<int> dp(n + 1, -1);
         return solverec(nums, dp, n - 1);
+    }
+};
+
+
+
+Tabulation Code - 
+
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> dp (n, 0);
+        dp[0] = nums[0];
+        for(int i = 1; i < n; ++i)
+        {
+            int take = nums[i]; if(i > 1) take += dp[i - 2];
+            int notTake = 0 + dp[i - 1];
+            dp[i] = max(take, notTake);
+        }
+        return dp[n - 1];
+    }
+};
+
+
+
+Space Optimized Tabulation - 
+
+
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        int prev = nums[0];
+        int prev2 = 0;
+        for(int i = 1; i < n; ++i)
+        {
+            int take = nums[i]; if(i > 1) take += prev2;
+            int notTake = 0 + prev;
+            int curr_i = max(take, notTake);
+            prev2 = prev;
+            prev = curr_i;
+        }
+        return prev;
     }
 };
